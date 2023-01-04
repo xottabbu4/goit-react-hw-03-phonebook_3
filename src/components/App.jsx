@@ -1,12 +1,11 @@
-import { ContactForm } from "./ContactForm/ContactForm";
-import { Component } from "react";
-import { nanoid } from "nanoid";
-import { ContactList } from "./ContactList/ContactList";
-import { Filter } from "./Filter/Filter";
+import { ContactForm } from './ContactForm/ContactForm';
+import { Component } from 'react';
+import { nanoid } from 'nanoid';
+import { ContactList } from './ContactList/ContactList';
+import { Filter } from './Filter/Filter';
 import css from './App.module.css';
 
 export class App extends Component {
-
   state = {
     contacts: [
       { id: 'id-1', name: 'Rosie Simpson', number: '459-12-56' },
@@ -16,9 +15,8 @@ export class App extends Component {
     ],
     filter: '',
   };
-  
-  addContact = contact => {
 
+  addContact = contact => {
     const isExist = this.state.contacts.find(
       data => data.name === contact.name
     );
@@ -39,7 +37,7 @@ export class App extends Component {
   };
 
   getVisibleContacts = () => {
-    return this.state.contacts.filter((contact) =>
+    return this.state.contacts.filter(contact =>
       contact.name.toLowerCase().includes(this.state.filter.toLowerCase())
     );
   };
@@ -51,19 +49,19 @@ export class App extends Component {
     const visibleContacts = this.getVisibleContacts();
     return (
       <>
-        <section>
-        <div>
-          <h1>Phone Book</h1>
-        </div>
-        <div>
-        <h2>Contacts</h2>
-        <ContactForm addContact={this.addContact} />
-        <Filter setFilter={this.setFilter} />
-        <ContactList
-          contacts={visibleContacts}
-          deleteContact={this.deleteContact}
-        />
-        </div>
+        <section className={css.phonebook}>
+          <div className={css.container}>
+            <h1>Phone Book</h1>
+          </div>
+          <div className={css.container}>
+            <h2>Contacts</h2>
+            <ContactForm addContact={this.addContact} />
+            <Filter setFilter={this.setFilter} />
+            <ContactList
+              contacts={visibleContacts}
+              deleteContact={this.deleteContact}
+            />
+          </div>
         </section>
       </>
     );
