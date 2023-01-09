@@ -55,7 +55,7 @@ export class App extends Component {
           </div>
           <div className={css.container}>
             <h2>Contacts</h2>
-            <ContactForm addContact={this.addContact} />
+            <ContactForm addContact={this.addContact} btnText="Create"/>
             <Filter setFilter={this.setFilter} />
             <ContactList
               contacts={visibleContacts}
