@@ -43,7 +43,7 @@ export class App extends Component {
   };
 
   setFilter = event => {
-    this.setState({ filter: event.target.value });
+    this.setState({ filter: event.currentTarget.value });
   };
   render() {
     const visibleContacts = this.getVisibleContacts();
@@ -56,7 +56,7 @@ export class App extends Component {
           <div className={css.container}>
             <h2>Contacts</h2>
             <ContactForm addContact={this.addContact} btnText="Create"/>
-            <Filter setFilter={this.setFilter} />
+            <Filter filter={this.state.filter} onChange={this.setFilter}/>
             <ContactList
               contacts={visibleContacts}
               deleteContact={this.deleteContact}
